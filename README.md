@@ -167,17 +167,16 @@ Now I can add `@MyCustomAnnotation("It works")` on methods.
 ## License
 [MIT](https://github.com/jaumard/spool-annotations/blob/master/LICENSE)
 
-[vigo-image]:https://vigoreport.io/p/badge/mrC2MUz
-[vigo-url]:https://vigoreport.io/p/mrC2MUz
-[npm-image]: https://img.shields.io/npm/v/spool-annotations.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/spool-annotations
-[npm-download]: https://img.shields.io/npm/dt/spool-annotations.svg
-[ci-image]: https://travis-ci.org/jaumard/spool-annotations.svg?branch=master
-[ci-url]: https://travis-ci.org/jaumard/spool-annotations
-[daviddm-image]: http://img.shields.io/david/jaumard/spool-annotations.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/jaumard/spool-annotations
-[codeclimate-image]: https://img.shields.io/codeclimate/github/jaumard/spool-annotations.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github/jaumard/spool-annotations
+[npm-image]: https://img.shields.io/npm/v/@fabrix/spool-annotations.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@fabrix/spool-annotations
+[ci-image]: https://img.shields.io/circleci/project/github/fabrix-app/spool-annotations/master.svg
+[ci-url]: https://circleci.com/gh/fabrix-app/spool-annotations/tree/master
+[daviddm-image]: http://img.shields.io/david/fabrix-app/spool-annotations.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/fabrix-app/spool-annotations
 [gitter-image]: http://img.shields.io/badge/+%20GITTER-JOIN%20CHAT%20%E2%86%92-1DCE73.svg?style=flat-square
-[gitter-url]: https://gitter.im/fabrixjs/fabrix
+[gitter-url]: https://gitter.im/fabrix-app/fabrix
+[twitter-image]: https://img.shields.io/twitter/follow/FabrixApp.svg?style=social
+[twitter-url]: https://twitter.com/FabrixApp
+[coverage-image]: https://img.shields.io/codeclimate/coverage/github/fabrix-app/spool-annotations.svg?style=flat-square
+[coverage-url]: https://codeclimate.com/github/fabrix-app/spool-annotations/coverage
 
