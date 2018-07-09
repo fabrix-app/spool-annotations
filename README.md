@@ -1,17 +1,13 @@
 # spool-annotations
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/jaumard/spool-annotations.svg)](https://greenkeeper.io/)
 [![Gitter][gitter-image]][gitter-url]
 [![NPM version][npm-image]][npm-url]
-[![NPM downloads][npm-download]][npm-url]
-[![Build status][ci-image]][ci-url]
-[![Test status][vigo-image]][vigo-url]
+[![Build Status][ci-image]][ci-url]
+[![Test Coverage][coverage-image]][coverage-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
-[![Code Climate][codeclimate-image]][codeclimate-url]
-[![Beerpay](https://beerpay.io/jaumard/spool-annotations/make-wish.svg?style=flat)](https://beerpay.io/jaumard/spool-annotations)
-[![Beerpay](https://beerpay.io/jaumard/spool-annotations/badge.svg?style=flat)](https://beerpay.io/jaumard/spool-annotations)
+[![Follow @FabrixApp on Twitter][twitter-image]][twitter-url]
 
-:package: Add Route, Policy and custom annotations support for Tails.js applications
+:package: Add Route, Policy and custom annotations support for Fabrix applications
 
 ## Intallation
 With fab cli :
