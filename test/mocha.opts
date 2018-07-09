@@ -1,0 +1,12 @@
+--reporter spec
+--timeout 120000
+--reporter mochavigo
+--reporter-options project-key=bc7cc556cba767e693a56780828765e18248e72a
+--reporter spec
+--recursive
+--full-trace
+--no-exit
+--check-leaks
+--globals app,__core-js_shared__,__coverage__
+
+test/index.js test/**/*.test.js

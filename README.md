@@ -1,0 +1,187 @@
+# spool-annotations
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/jaumard/spool-annotations.svg)](https://greenkeeper.io/)
+[![Gitter][gitter-image]][gitter-url]
+[![NPM version][npm-image]][npm-url]
+[![NPM downloads][npm-download]][npm-url]
+[![Build status][ci-image]][ci-url]
+[![Test status][vigo-image]][vigo-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![Code Climate][codeclimate-image]][codeclimate-url]
+[![Beerpay](https://beerpay.io/jaumard/spool-annotations/make-wish.svg?style=flat)](https://beerpay.io/jaumard/spool-annotations)
+[![Beerpay](https://beerpay.io/jaumard/spool-annotations/badge.svg?style=flat)](https://beerpay.io/jaumard/spool-annotations)
+
+:package: Add Route, Policy and custom annotations support for Tails.js applications
+
+## Intallation
+With fab cli :
+
+```
+npm install -g @fabrix/fab-cli
+fab spool spool-annotations
+```
+
+With npm (you will have to create config file manually) :
+
+`npm install --save @fabrix/spool-annotations`
+
+## Configuration
+First you need to add this spool to your __main__ configuration : 
+```js
+// config/main.ts
+
+export const annotations = {
+   // ...
+
+   spools: [
+      // ...
+      require('@fabrix/spool-annotations').AnnotationsSpool,
+      // ...
+   ]
+   // ...
+}
+```
+
+Then :
+```js
+// config/annotations.ts
+export const annotations = {
+  policy: true,//enable policy annotations
+  route: true,//enable route annotations
+  pathToScan: './api/controllers',//or ./api for hmvc
+  customAnnotations: null, //Add your custom annotations here, require('./annotations') for example
+
+}
+```
+
+## Usage
+
+### Route
+A route added with annotation will replace any previous route set under `config/routes.ts` (for a same path).
+```
+module.exports = class DefaultController extends Controller {
+
+  /**
+   * Return some info about this application
+   * @Route("GET /default/info") or @Route({method: ["GET"], path: "/default/info"})
+   */
+  info (request, reply) {
+    reply.json(this.app.services.DefaultService.getApplicationInfo())
+  }
+}
+```
+
+You can also use @METHOD for defining new routes.
+```
+module.exports = class DefaultController extends Controller {
+
+  /**
+   * Return some info about this application
+   * @GET('/default/info')
+   * @HEAD('/default/info')
+   * @OPTIONS('/default/info')
+   * @POST('/default/info')
+   * @PUT('/default/info')
+   * @PATCH('/default/info')
+   * @DELETE('/default/info')
+   */
+  info (request, reply) {
+    reply.json(this.app.services.DefaultService.getApplicationInfo())
+  }
+}
+```
+
+A more complex sample with validation.
+```
+module.exports = class DefaultController extends Controller {
+
+  /**
+   * Return some info about this application
+   * @GET(path:{'/default/info'}, config: { validate: {
+   * query: { infos: Joi.sring().required() }
+   * }})
+   */
+  info (request, reply) {
+    reply.json(this.app.services.DefaultService.getApplicationInfo())
+  }
+}
+```
+
+See [hapijs tutorial on validation](http://hapijs.com/tutorials/validation) and [joi schema validation](https://github.com/hapijs/joi) for more complex with validate object.
+
+### Policy
+A policy added with annotation will be added to policies set under `config/policies.ts`.
+```
+module.exports = class DefaultController extends Controller {
+
+  /**
+   * Return some info about this application
+   * @Policy("Default.auth") or @Policy(["Default.auth", "Default.acl"])
+   */
+  info (request, reply) {
+    reply.json(this.app.services.Defaultervice.getApplicationInfo())
+  }
+}
+```
+
+### Custom
+Create your own annotation like this :
+
+```
+'use strict'
+const Annotation = require('ecmas-annotations').Annotation
+
+export class MyCustomAnnotation extends Annotation {
+
+    /**
+     * The possible targets
+     *
+     * (Annotation.CONSTRUCTOR, Annotation.PROPERTY, Annotation.METHOD)
+     *
+     * @type {Array}
+     */
+    static get targets() {
+      return [Annotation.METHOD]
+    }
+
+    /**
+     * The function to call when annotations are find
+     *
+     * @type {Function}
+     */
+    handler(app, annotation) {
+      //Do whatever you want when annotation is found
+    }
+
+    /**
+     * File path
+     *
+     * @type {String}
+     * @required
+     */
+    static get path() {
+      return __filename
+    }
+
+}
+
+```
+Now I can add `@MyCustomAnnotation("It works")` on methods.
+
+## License
+[MIT](https://github.com/jaumard/spool-annotations/blob/master/LICENSE)
+
+[vigo-image]:https://vigoreport.io/p/badge/mrC2MUz
+[vigo-url]:https://vigoreport.io/p/mrC2MUz
+[npm-image]: https://img.shields.io/npm/v/spool-annotations.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/spool-annotations
+[npm-download]: https://img.shields.io/npm/dt/spool-annotations.svg
+[ci-image]: https://travis-ci.org/jaumard/spool-annotations.svg?branch=master
+[ci-url]: https://travis-ci.org/jaumard/spool-annotations
+[daviddm-image]: http://img.shields.io/david/jaumard/spool-annotations.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/jaumard/spool-annotations
+[codeclimate-image]: https://img.shields.io/codeclimate/github/jaumard/spool-annotations.svg?style=flat-square
+[codeclimate-url]: https://codeclimate.com/github/jaumard/spool-annotations
+[gitter-image]: http://img.shields.io/badge/+%20GITTER-JOIN%20CHAT%20%E2%86%92-1DCE73.svg?style=flat-square
+[gitter-url]: https://gitter.im/fabrixjs/fabrix
+
