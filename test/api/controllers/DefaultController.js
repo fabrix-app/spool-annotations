@@ -5,7 +5,7 @@ const Controller = require('@fabrix/fabrix/dist/common').FabrixController
  * @module DefaultController
  *
  * @description Default Controller included with a new Fabrix app
- * @see {@link https://fabrix.app/doc/api/controllers}
+ * @see {@link https://fabrix.app/docs/api/controllers}
  * @this FabrixApp
  */
 module.exports = class DefaultController extends Controller{
